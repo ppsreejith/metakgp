@@ -28,8 +28,11 @@ class User < ActiveRecord::Base
   VALID_ROLL_NO_REGEX = /\A\d{1,2}[A-Z]{2}\d{3,5}\z/
   validates :roll_no, presence: true, format: { with: VALID_ROLL_NO_REGEX }, uniqueness: { case_sensitive: false }
 
+  has_many :travel_plans
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
+
 end

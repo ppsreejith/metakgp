@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
 
+  before_filter :must_be_signed_in, only: [:show]
+  before_filter :redirect_if_already_signed_in, only: [:new, :create]
+
   def new
   	@user = User.new
   end
 
   def show
-  	@user = User.find(params[:id])
+    	@user = current_user
   end
 
   def create
@@ -18,5 +21,7 @@ class UsersController < ApplicationController
   	  render 'new'
   	end
   end
+
+  
 
 end

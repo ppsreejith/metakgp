@@ -8,6 +8,8 @@ Metakgp::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/profile', to: 'users#show', as: 'profile'
+  match '/travel/new', to: 'travel_segments#new', as: 'new_travel'
   
 
   # The priority is based upon order of creation:
